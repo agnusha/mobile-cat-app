@@ -46,8 +46,8 @@ export default function EditScreenInfo({ path }: { path: string }) {
         />
         <Button
           onPress={() => {
+            satiety !== 0 && satiety % 14 == 0 && startImageRotateFunction();
             setSatiety(satiety + 1);
-            startImageRotateFunction();
           }}
           title="Feed"
           color="purple"
