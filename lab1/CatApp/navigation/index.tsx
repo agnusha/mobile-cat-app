@@ -104,7 +104,7 @@ function BottomTabNavigator() {
               <FontAwesome
                 name="info-circle"
                 size={25}
-                color={Colors[colorScheme].text}
+                color={Colors[colorScheme].textInverse}
                 style={{ marginRight: 15 }}
               />
             </Pressable>
