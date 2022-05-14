@@ -1,11 +1,26 @@
-import * as WebBrowser from "expo-web-browser";
 import React from "react";
-import { Button, Image, StyleSheet } from "react-native";
+import { Animated, Button, Easing, StyleSheet } from "react-native";
 import catImg from "../assets/images/cat-food-hearts-icon 1.png";
 import { Text, View } from "./Themed";
 
+const spinValueHandler = new Animated.Value(0);
+const spin = spinValueHandler.interpolate({
+  inputRange: [0, 1],
+  outputRange: ["0deg", "360deg"],
+});
+
 export default function EditScreenInfo({ path }: { path: string }) {
   const [satiety, setSatiety] = React.useState(0);
+
+  const startImageRotateFunction = () => {
+    spinValueHandler.setValue(0);
+    Animated.timing(spinValueHandler, {
+      toValue: 1,
+      duration: 3000,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }).start();
+  };
 
   return (
     <View style={styles.container}>
@@ -20,7 +35,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
       </View>
 
       <View style={styles.imageContainer}>
-        <Image source={catImg} style={styles.catImage} />
+        <Animated.Image source={catImg} style={styles.catImage} />
       </View>
 
       <View style={styles.marginContainer}>
@@ -30,7 +45,10 @@ export default function EditScreenInfo({ path }: { path: string }) {
           darkColor="rgba(255,255,255,0.1)"
         />
         <Button
-          onPress={() => setSatiety(satiety + 1)}
+          onPress={() => {
+            setSatiety(satiety + 1);
+            startImageRotateFunction();
+          }}
           title="Feed"
           color="purple"
           accessibilityLabel="Feed the pet"
@@ -54,6 +72,7 @@ const styles = StyleSheet.create({
   catImage: {
     width: 200,
     height: 200,
+    transform: [{ rotate: spin }],
   },
 
   marginContainer: {
