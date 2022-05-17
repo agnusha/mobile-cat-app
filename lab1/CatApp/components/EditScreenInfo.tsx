@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 import { Animated, Button, Easing, StyleSheet } from "react-native";
 import catImg from "../assets/images/cat-food-hearts-icon 1.png";
@@ -59,13 +60,21 @@ export default function EditScreenInfo({ path }: { path: string }) {
           darkColor="rgba(255,255,255,0.1)"
         />
         <Button
-          onPress={() => {
-            satiety !== 0 && satiety % 14 == 0 && startImageRotateFunction();
-            setSatiety(satiety + 1);
+          onPress={async () => {
+            const resultToBeSaved = { date: new Date(), value: satiety };
+            const existingResult = await AsyncStorage.getItem("resultGame");
+
+            let newResult = existingResult && JSON.parse(existingResult);
+            if (!newResult) {
+              newResult = [];
+            }
+
+            newResult.push(resultToBeSaved);
+            await AsyncStorage.setItem("resultGame", JSON.stringify(newResult));
           }}
           title="Save result"
           color="purple"
-          accessibilityLabel="Feed the pet"
+          accessibilityLabel="Save result"
         />
       </View>
     </View>
