@@ -53,6 +53,20 @@ export default function EditScreenInfo({ path }: { path: string }) {
           color="purple"
           accessibilityLabel="Feed the pet"
         />
+        <View
+          style={styles.separator}
+          lightColor="#eee"
+          darkColor="rgba(255,255,255,0.1)"
+        />
+        <Button
+          onPress={() => {
+            satiety !== 0 && satiety % 14 == 0 && startImageRotateFunction();
+            setSatiety(satiety + 1);
+          }}
+          title="Save result"
+          color="purple"
+          accessibilityLabel="Feed the pet"
+        />
       </View>
     </View>
   );
@@ -76,6 +90,7 @@ const styles = StyleSheet.create({
   },
 
   marginContainer: {
+    alignItems: "center",
     marginHorizontal: 50,
   },
 
