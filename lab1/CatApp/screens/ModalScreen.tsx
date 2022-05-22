@@ -15,13 +15,13 @@ export default function ModalScreen() {
       />
 
       <Text>
-        <b>Name</b>: Starovojtava Agnia
+        <b>Name</b>: Starovojtava Agnia and Seledcova Liza
       </Text>
       <Text>
         <b>Group</b>: 981073
       </Text>
       <Text>
-        <b>Lab</b>: 1
+        <b>Lab</b>: 4
       </Text>
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
