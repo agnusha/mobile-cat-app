@@ -9,7 +9,7 @@ const spin = spinValueHandler.interpolate({
   outputRange: ["0deg", "360deg"],
 });
 
-export default function EditScreenInfo({ path }: { path: string }) {
+export default function HomeScreen({ path }: { path: string }) {
   const startImageRotateFunction = () => {
     spinValueHandler.setValue(0);
     Animated.timing(spinValueHandler, {
@@ -35,7 +35,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
       <View style={styles.marginContainer}></View>
 
       <View style={styles.imageContainer}>
-        <Animated.Image source={mainImg} style={styles.catImage} />
+        <Animated.Image source={mainImg} style={styles.mainImage} />
       </View>
 
       <View style={styles.marginContainer}>
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 
-  catImage: {
+  mainImage: {
     width: 200,
     height: 200,
     transform: [{ rotate: spin }],
@@ -78,11 +78,6 @@ const styles = StyleSheet.create({
   marginContainer: {
     alignItems: "center",
     marginHorizontal: 50,
-  },
-
-  rightContainer: {
-    alignSelf: "flex-end",
-    marginTop: 10,
   },
 
   baseText: {

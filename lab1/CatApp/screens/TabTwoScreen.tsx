@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
+import HomeScreen from "../components/HomeScreen";
 import { Text, View } from "../components/Themed";
 import { DataTable } from "react-native-paper";
 
@@ -13,7 +13,7 @@ export default function TabTwoScreen() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+      <HomeScreen path="/screens/TabTwoScreen.tsx" />
     </View>
   );
 }

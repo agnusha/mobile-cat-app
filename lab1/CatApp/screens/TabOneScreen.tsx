@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import EditScreenInfo from "../components/EditScreenInfo";
+import HomeScreen from "../components/HomeScreen";
 import { View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 
@@ -8,7 +8,7 @@ export default function TabOneScreen({
 }: RootTabScreenProps<"TabOne">) {
   return (
     <View style={styles.container}>
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <HomeScreen path="/screens/TabOneScreen.tsx" />
     </View>
   );
 }
