@@ -127,6 +127,33 @@ function BottomTabNavigator() {
           },
         }}
       />
+      <BottomTab.Screen
+        name="TabThree"
+        component={TabOneScreen}
+        options={({ navigation }: RootTabScreenProps<"TabThree">) => ({
+          title: "Home",
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerTintColor: Colors[colorScheme].textInverse,
+          headerStyle: {
+            backgroundColor: Colors[colorScheme].backgroundDark,
+          },
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.navigate("Modal")}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}
+            >
+              <FontAwesome
+                name="info-circle"
+                size={25}
+                color={Colors[colorScheme].textInverse}
+                style={{ marginRight: 15 }}
+              />
+            </Pressable>
+          ),
+        })}
+      />
     </BottomTab.Navigator>
   );
 }

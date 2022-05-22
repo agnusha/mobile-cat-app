@@ -1,4 +1,3 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 import { Animated, Button, Easing, StyleSheet } from "react-native";
 import mainImg from "../assets/images/pushnoi.jpg";
@@ -62,7 +61,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 50,
-    marginVertical: 20,
     alignItems: "center",
     justifyContent: "space-between",
   },
