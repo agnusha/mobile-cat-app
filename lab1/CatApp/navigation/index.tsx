@@ -92,7 +92,7 @@ function BottomTabNavigator() {
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
-          title: "Feed the cat",
+          title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerTintColor: Colors[colorScheme].textInverse,
           headerStyle: {
@@ -119,7 +119,7 @@ function BottomTabNavigator() {
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          title: "Result",
+          title: "Tabs",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerTintColor: Colors[colorScheme].textInverse,
           headerStyle: {

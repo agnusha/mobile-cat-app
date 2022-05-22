@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 import { Animated, Button, Easing, StyleSheet } from "react-native";
-import catImg from "../assets/images/cat-food-hearts-icon 1.png";
+import mainImg from "../assets/images/pushnoi.jpg";
 import { Text, View } from "./Themed";
 
 const spinValueHandler = new Animated.Value(0);
@@ -11,8 +11,6 @@ const spin = spinValueHandler.interpolate({
 });
 
 export default function EditScreenInfo({ path }: { path: string }) {
-  const [satiety, setSatiety] = React.useState(0);
-
   const startImageRotateFunction = () => {
     spinValueHandler.setValue(0);
     Animated.timing(spinValueHandler, {
@@ -25,18 +23,20 @@ export default function EditScreenInfo({ path }: { path: string }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.rightContainer}>
-        <Text
-          style={styles.baseText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)"
-        >
-          Satiety: <b>{satiety}</b>
-        </Text>
-      </View>
+      <h2>Guitar app</h2>
+      <Text
+        style={styles.baseText}
+        lightColor="rgba(0,0,0,0.8)"
+        darkColor="rgba(255,255,255,0.8)"
+      >
+        App provides information about guitar tabs, favourites guitars of people
+        and you can rotate Pushnoi 😂
+      </Text>
+
+      <View style={styles.marginContainer}></View>
 
       <View style={styles.imageContainer}>
-        <Animated.Image source={catImg} style={styles.catImage} />
+        <Animated.Image source={mainImg} style={styles.catImage} />
       </View>
 
       <View style={styles.marginContainer}>
@@ -47,34 +47,11 @@ export default function EditScreenInfo({ path }: { path: string }) {
         />
         <Button
           onPress={() => {
-            satiety !== 0 && satiety % 14 == 0 && startImageRotateFunction();
-            setSatiety(satiety + 1);
+            startImageRotateFunction();
           }}
-          title="Feed"
+          title="Rotate"
           color="purple"
           accessibilityLabel="Feed the pet"
-        />
-        <View
-          style={styles.separator}
-          lightColor="#eee"
-          darkColor="rgba(255,255,255,0.1)"
-        />
-        <Button
-          onPress={async () => {
-            const resultToBeSaved = { date: new Date(), value: satiety };
-            const existingResult = await AsyncStorage.getItem("resultGame");
-
-            let newResult = existingResult && JSON.parse(existingResult);
-            if (!newResult) {
-              newResult = [];
-            }
-
-            newResult.push(resultToBeSaved);
-            await AsyncStorage.setItem("resultGame", JSON.stringify(newResult));
-          }}
-          title="Save result"
-          color="purple"
-          accessibilityLabel="Save result"
         />
       </View>
     </View>
@@ -84,6 +61,8 @@ export default function EditScreenInfo({ path }: { path: string }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingVertical: 50,
+    marginVertical: 20,
     alignItems: "center",
     justifyContent: "space-between",
   },
