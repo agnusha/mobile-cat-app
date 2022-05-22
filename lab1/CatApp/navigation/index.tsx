@@ -132,7 +132,7 @@ function BottomTabNavigator() {
         name="TabThree"
         component={TabThreeScreen}
         options={({ navigation }: RootTabScreenProps<"TabThree">) => ({
-          title: "Home",
+          title: "Guitars",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerTintColor: Colors[colorScheme].textInverse,
           headerStyle: {
@@ -146,7 +146,7 @@ function BottomTabNavigator() {
               })}
             >
               <FontAwesome
-                name="info-circle"
+                name="heart-o"
                 size={25}
                 color={Colors[colorScheme].textInverse}
                 style={{ marginRight: 15 }}
