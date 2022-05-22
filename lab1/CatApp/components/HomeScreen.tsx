@@ -60,7 +60,7 @@ export default function HomeScreen({ path }: { path: string }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 50,
+    paddingVertical: 20,
     alignItems: "center",
     justifyContent: "space-between",
   },
