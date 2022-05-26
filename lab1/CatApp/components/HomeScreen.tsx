@@ -22,7 +22,7 @@ export default function HomeScreen({ path }: { path: string }) {
 
   return (
     <View style={styles.container}>
-      <h2>Guitar app</h2>
+      <Text style={styles.headerText}>Guitar app</Text>
       <Text
         style={styles.baseText}
         lightColor="rgba(0,0,0,0.8)"
@@ -81,8 +81,15 @@ const styles = StyleSheet.create({
   },
 
   baseText: {
-    fontSize: 17,
+    fontSize: 18,
     lineHeight: 24,
+    textAlign: "center",
+  },
+
+  headerText: {
+    fontSize: 24,
+    lineHeight: 24,
+    fontWeight: "bold",
     textAlign: "center",
   },
 
