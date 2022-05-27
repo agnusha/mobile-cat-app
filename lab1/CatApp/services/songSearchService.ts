@@ -7,7 +7,7 @@ export const songsterrSearch = async (
 ): Promise<IsongsterrTabs | null> => {
   try {
     const response = await (
-      await fetch(BASEURL + "songs?pattern=" + string + "&size=200", {
+      await fetch(BASEURL + "songs?pattern=" + string + "&size=20", {
         mode: "no-cors",
       } as RequestInfo)
     ).json();

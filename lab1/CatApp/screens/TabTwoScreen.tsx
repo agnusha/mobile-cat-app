@@ -1,9 +1,10 @@
-import { StyleSheet, Button } from "react-native";
-import { Text, View } from "../components/Themed";
-import { songsterrSearch } from "../services/songSearchService";
+import { ListItem, SearchBar, Badge } from "@rneui/base";
 import React, { useState } from "react";
+import { Button, ScrollView, StyleSheet } from "react-native";
+import { Text, View } from "../components/Themed";
 import { IsongsterrTabs } from "../models/TabInterfaces";
-import { SearchBar } from "@rneui/base";
+import { songsterrSearch } from "../services/songSearchService";
+import { useEffect } from "react";
 
 export default function TabTwoScreen() {
   const [tabs, setTabs] = useState<IsongsterrTabs>();
@@ -11,7 +12,18 @@ export default function TabTwoScreen() {
 
   const updateSearch = (textSearch: string) => {
     setSearch(textSearch);
+    searchApi();
   };
+
+  const searchApi = async () => {
+    const results = await songsterrSearch(search);
+    setTabs(results ?? []);
+    console.log("Tabs", results);
+  };
+
+  useEffect(() => {
+    searchApi("Alice");
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -28,27 +40,25 @@ export default function TabTwoScreen() {
       />
 
       <View style={styles.containerContent}>
-        <Text style={styles.title}>Tabs portal</Text>
+        <Text style={styles.title}>Tabs</Text>
 
-        <View
-          style={styles.separator}
-          lightColor="#eee"
-          darkColor="rgba(255,255,255,0.1)"
-        />
-        {tabs?.map((tab) => (
-          <Text>{tab.artist}</Text>
-        ))}
+        <ScrollView>
+          {tabs?.map((tab, i) => (
+            <ListItem key={i} bottomDivider>
+              <Badge
+                value={i + 1}
+                badgeStyle={{ backgroundColor: "#db7093" }}
+                textStyle={{ color: "#fff" }}
+                containerStyle={{ marginTop: -20 }}
+              />
 
-        <Button
-          onPress={async () => {
-            const results = await songsterrSearch("Alice");
-            setTabs(results ?? []);
-            console.log("Tabs", results);
-          }}
-          title="Rotate"
-          color="purple"
-          accessibilityLabel="Feed the pet"
-        />
+              <ListItem.Content>
+                <ListItem.Title>{tab.artist}</ListItem.Title>
+                <ListItem.Subtitle>{tab.defaultTrack}</ListItem.Subtitle>
+              </ListItem.Content>
+            </ListItem>
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
