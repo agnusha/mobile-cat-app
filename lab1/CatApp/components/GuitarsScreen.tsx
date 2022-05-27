@@ -7,7 +7,7 @@ export default function GuitarsScreen({ path }: { path: string }) {
     {
       id: 1,
       name: "Guitar 1",
-      description: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+      description: "Lorem ipsum dolor sit amet Lorem icpsum dolor sit amet",
     },
     {
       id: 2,
