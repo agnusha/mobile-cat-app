@@ -30,7 +30,7 @@ export default function GuitarItemRow({ item }: { item: GuitarItem }) {
           <AntDesign name="tago" size={28} color="#e89b17" />
         </View>
       </View>
-      <View style={{ flexGrow: 1, flexShrink: 1, alignSelf: "center" }}>
+      <View style={{ flex: 1, alignSelf: "center" }}>
         <Text style={{ fontSize: 15 }}>{item.name}</Text>
         <Text numberOfLines={2} style={{ color: "#8f8f8f" }}>
           {item.description}
