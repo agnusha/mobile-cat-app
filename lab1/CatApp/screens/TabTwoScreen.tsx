@@ -1,19 +1,55 @@
-import { StyleSheet } from "react-native";
-
-import HomeScreen from "../components/HomeScreen";
+import { StyleSheet, Button } from "react-native";
 import { Text, View } from "../components/Themed";
-import { DataTable } from "react-native-paper";
+import { songsterrSearch } from "../services/songSearchService";
+import React, { useState } from "react";
+import { IsongsterrTabs } from "../models/TabInterfaces";
+import { SearchBar } from "@rneui/base";
 
 export default function TabTwoScreen() {
+  const [tabs, setTabs] = useState<IsongsterrTabs>();
+  const [search, setSearch] = useState("");
+
+  const updateSearch = (textSearch: string) => {
+    setSearch(textSearch);
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Table with results</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+      <SearchBar
+        platform="default"
+        containerStyle={{ backgroundColor: "none", width: "100%" }}
+        lightTheme
+        onChangeText={updateSearch}
+        placeholder="Type query here..."
+        placeholderTextColor="#888"
+        round
+        showCancel
+        value={search}
       />
-      <HomeScreen path="/screens/TabTwoScreen.tsx" />
+
+      <View style={styles.containerContent}>
+        <Text style={styles.title}>Tabs portal</Text>
+
+        <View
+          style={styles.separator}
+          lightColor="#eee"
+          darkColor="rgba(255,255,255,0.1)"
+        />
+        {tabs?.map((tab) => (
+          <Text>{tab.artist}</Text>
+        ))}
+
+        <Button
+          onPress={async () => {
+            const results = await songsterrSearch("Alice");
+            setTabs(results ?? []);
+            console.log("Tabs", results);
+          }}
+          title="Rotate"
+          color="purple"
+          accessibilityLabel="Feed the pet"
+        />
+      </View>
     </View>
   );
 }
@@ -21,13 +57,21 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    paddingVertical: 20,
   },
+
+  containerContent: {
+    flex: 1,
+    paddingHorizontal: 30,
+    paddingVertical: 20,
+    alignItems: "center",
+  },
+
   title: {
     fontSize: 20,
     fontWeight: "bold",
   },
+
   separator: {
     marginVertical: 30,
     height: 1,
