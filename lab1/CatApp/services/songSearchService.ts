@@ -1,27 +1,33 @@
-import { Pitch, names } from "../constants/Pitch";
-import { IsongsterrTabs, InewTuning } from "../models/TabInterfaces";
+import { names, Pitch } from "../constants/Pitch";
+import {
+  GroupedTracks,
+  InewTuning,
+  IsongsterrTabs,
+} from "../models/TabInterfaces";
 const BASEURL = "https://www.songsterr.com/api/";
 
 export const songsterrSearch = async (
   string: string
-): Promise<IsongsterrTabs | null> => {
+): Promise<GroupedTracks | null> => {
   try {
     const response = await (
       await fetch(BASEURL + "songs?pattern=" + string + "&size=20", {
         mode: "no-cors",
-      } as RequestInfo)
+      } as RequestInit)
     ).json();
 
-    const Tabs: IsongsterrTabs = response;
+    const tabs: IsongsterrTabs = response;
 
-    for (const songs of Tabs) {
+    for (const songs of tabs) {
       for (const tracks of songs.tracks) {
         if (tracks.tuning)
-          (tracks.tuning as InewTuning) = idToTuning(tracks.tuning as number[]);
+          (tracks.tuningEnriched as InewTuning) = idToTuning(
+            tracks.tuning as number[]
+          );
       }
     }
 
-    return Tabs;
+    return groupBy(["artist"])(tabs) as GroupedTracks;
   } catch (err) {
     if (err) {
       console.error(err);
@@ -31,10 +37,19 @@ export const songsterrSearch = async (
   }
 };
 
+const groupBy =
+  <T>(keys: (keyof T)[]) =>
+  (array: T[]): Record<string, T[]> =>
+    array.reduce((objectsByKeyValue, obj) => {
+      const value = keys.map((key) => obj[key]).join("-");
+      objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
+      return objectsByKeyValue;
+    }, {} as Record<string, T[]>);
+
 const idToString = (tuning: number[], octaves: boolean): string[] => {
-  return tuning.map((tuning: number) => {
-    const notes = Math.floor(tuning / 12) - 1;
-    return Pitch[tuning % 12] + (octaves ? notes : "");
+  return tuning.map((t: number) => {
+    const notes = Math.floor(t / 12) - 1;
+    return Pitch[t % 12] + (octaves ? notes : "");
   });
 };
 
@@ -42,13 +57,10 @@ function idToTuning(tuning: number[]): InewTuning {
   const octaves: string = idToString(tuning, true).reverse().join(" "),
     notes: string = idToString(tuning, false)
       .reverse()
-      .map((tuning: string, octaves: number) =>
-        octaves === tuning.length - 1 ? tuning.toLowerCase() : tuning
-      )
+      .map((t: string, o: number) => (o === t.length - 1 ? t.toLowerCase() : t))
       .join(" ");
 
   let name = "";
-
   if (tuning.length in names && octaves in names[tuning.length])
     name = names[tuning.length][octaves];
 
