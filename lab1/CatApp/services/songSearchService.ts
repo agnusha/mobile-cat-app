@@ -8,7 +8,7 @@ const BASEURL = "https://www.songsterr.com/api/";
 
 export const songsterrSearch = async (
   string: string
-): Promise<GroupedTracks | null> => {
+): Promise<GroupedTracks | undefined> => {
   try {
     const response = await (
       await fetch(BASEURL + "songs?pattern=" + string + "&size=20", {

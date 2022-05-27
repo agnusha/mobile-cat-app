@@ -6,8 +6,8 @@ import { GroupedTracks } from "../models/TabInterfaces";
 import { songsterrSearch } from "../services/songSearchService";
 
 export default function TabTwoScreen() {
-  const [tabs, setTabs] = useState<GroupedTracks>();
-  const [search, setSearch] = useState("");
+  const [tabs, setTabs] = useState<GroupedTracks | undefined>();
+  const [search, setSearch] = useState<string>();
 
   const updateSearch = (textSearch: string) => {
     setSearch(textSearch);
@@ -15,8 +15,8 @@ export default function TabTwoScreen() {
   };
 
   const searchApi = async () => {
-    const results = await songsterrSearch(search);
-    setTabs(results ?? {});
+    const results = search ? await songsterrSearch(search) : undefined;
+    setTabs(results);
     console.log("Tabs", results);
   };
 
@@ -36,8 +36,8 @@ export default function TabTwoScreen() {
 
       <View style={styles.containerContent}>
         {tabs && (
-          <ScrollView>
-            {Object.entries(tabs)?.map(([artist, tabs], i) => (
+          <ScrollView style={{ width: "100%" }}>
+            {Object.entries(tabs)?.map(([artist, tabsList], i) => (
               <>
                 <ListItem
                   key={i}
@@ -62,7 +62,7 @@ export default function TabTwoScreen() {
                   </ListItem.Content>
                 </ListItem>
 
-                {tabs.map((tab, j) => (
+                {tabsList.map((tab, j) => (
                   <ListItem key={`${i}${j}`} bottomDivider>
                     <Badge
                       value={j + 1}
