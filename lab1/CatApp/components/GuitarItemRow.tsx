@@ -1,14 +1,15 @@
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { GuitarItem } from "../models/GuitarItem";
 import { Text, View } from "./Themed";
 
 export default function GuitarItemRow({ item }: { item: GuitarItem }) {
   return (
-    <TouchableOpacity
+    <View
       key={item.id}
       style={{
+        display: "flex",
         flexDirection: "row",
         borderBottomWidth: 1,
         borderColor: "#808080",
@@ -16,7 +17,6 @@ export default function GuitarItemRow({ item }: { item: GuitarItem }) {
         height: 80,
         width: "100%",
       }}
-      onPress={() => {}}
     >
       <View style={[styles.centerElement, { width: 75 }]}>
         <View
@@ -45,10 +45,14 @@ export default function GuitarItemRow({ item }: { item: GuitarItem }) {
           style={{ marginRight: 0, marginLeft: 10 }}
         />
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  centerElement: { justifyContent: "center", alignItems: "center" },
+  centerElement: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 10,
+  },
 });

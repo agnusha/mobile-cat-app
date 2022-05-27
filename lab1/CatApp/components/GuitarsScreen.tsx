@@ -136,27 +136,25 @@ export default function GuitarsScreen({ path }: { path: string }) {
           animationType="spring"
         >
           <TabView.Item style={{ width: "100%" }}>
-            <View>
-              <Text>
-                {items[0].map((i) => (
-                  <GuitarItem item={i} />
-                ))}
-              </Text>
+            <View style={{ width: "100%" }}>
+              {items[0].map((i) => (
+                <GuitarItem item={i} />
+              ))}
             </View>
           </TabView.Item>
           <TabView.Item style={{ width: "100%" }}>
-            <Text>
+            <View style={{ width: "100%" }}>
               {items[1].map((i) => (
                 <GuitarItem item={i} />
               ))}
-            </Text>
+            </View>
           </TabView.Item>
           <TabView.Item style={{ width: "100%" }}>
-            <Text>
+            <View>
               {items[2].map((i) => (
                 <GuitarItem item={i} />
               ))}
-            </Text>
+            </View>
           </TabView.Item>
         </TabView>
       </>
