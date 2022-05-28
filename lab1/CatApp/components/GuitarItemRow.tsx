@@ -4,7 +4,13 @@ import { StyleSheet, Image } from "react-native";
 import { GuitarItem } from "../models/GuitarItem";
 import { Text, View } from "./Themed";
 
-export default function GuitarItemRow({ item }: { item: GuitarItem }) {
+export default function GuitarItemRow({
+  item,
+  onPress,
+}: {
+  item: GuitarItem;
+  onPress: (id: number) => void;
+}) {
   return (
     <View
       key={item.id}
@@ -43,6 +49,9 @@ export default function GuitarItemRow({ item }: { item: GuitarItem }) {
           backgroundColor="#db7093"
           color="#fff"
           style={{ marginRight: 0, marginLeft: 10 }}
+          onPress={() => {
+            onPress(item.id);
+          }}
         />
       </View>
     </View>

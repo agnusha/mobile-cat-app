@@ -7,7 +7,7 @@ import GuitarItemRow from "./GuitarItemRow";
 
 export default function GuitarsScreen() {
   const [index, setIndex] = React.useState(0);
-  const [visible, setVisible] = React.useState(true);
+  const [visible, setVisible] = React.useState(false);
   const items = Guitars;
 
   const toggleDialog = () => {
@@ -66,21 +66,21 @@ export default function GuitarsScreen() {
           <TabView.Item style={{ width: "100%" }}>
             <View style={{ width: "100%" }}>
               {items[0].map((i) => (
-                <GuitarItemRow item={i} />
+                <GuitarItemRow item={i} onPress={() => toggleDialog()} />
               ))}
             </View>
           </TabView.Item>
           <TabView.Item style={{ width: "100%" }}>
             <View style={{ width: "100%" }}>
               {items[1].map((i) => (
-                <GuitarItemRow item={i} />
+                <GuitarItemRow item={i} onPress={() => toggleDialog()} />
               ))}
             </View>
           </TabView.Item>
           <TabView.Item style={{ width: "100%" }}>
             <View>
               {items[2].map((i) => (
-                <GuitarItemRow item={i} />
+                <GuitarItemRow item={i} onPress={() => toggleDialog()} />
               ))}
             </View>
           </TabView.Item>
