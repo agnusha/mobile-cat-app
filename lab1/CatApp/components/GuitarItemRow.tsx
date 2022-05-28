@@ -3,7 +3,6 @@ import React from "react";
 import { StyleSheet, Image } from "react-native";
 import { GuitarItem } from "../models/GuitarItem";
 import { Text, View } from "./Themed";
-import firstImg from "../assets/images/1.png";
 
 export default function GuitarItemRow({ item }: { item: GuitarItem }) {
   return (

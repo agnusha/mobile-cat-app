@@ -38,46 +38,27 @@ export default function GuitarsScreen({}: {}) {
     ],
     [
       {
-        id: 1,
-        name: "HOFNER SUPER SOLID V2",
-        description: "Lorem ipsum dolor sit amet Lorem icpsum dolor sit amet",
-        image: "2.png",
-      },
-      {
-        id: 2,
-        name: "GIBSON LES PAUL SPECIAL DOUBLE CUTAWAY",
-        description:
-          "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum  dolor sit amet",
-        image: "2.png",
-      },
-      {
-        id: 3,
+        id: 5,
         name: "FENDER STRATOCASTER",
         description:
-          "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum  dolor sit amet",
-        image: "2.png",
+          'Eric switched to a FENDER STRATOCASTER in 1967, acquiring an instrument dubbed the "Brownie", although the neck was temporarily relocated to a FENDER TELECASTER, but then returned to its place.',
+        image: require("../assets/images/3.jpeg"),
       },
       {
-        id: 4,
-        name: "GIBSON LES PAUL STANDARD",
+        id: 6,
+        name: "GIBSON LES PAUL SPECIAL DOUBLE CUTAWAY",
         description:
-          "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum  dolor sit amet",
-        image: "2.png",
+          'in 1973, he assembled it from four different FENDER STRATOCASTER guitars from the 50s to his new "favorite" - a guitar with the name "Blackie".',
+        image: require("../assets/images/6.jpg"),
       },
     ],
     [
       {
-        id: 1,
-        name: "HOFNER SUPER SOLID V2",
-        description: "Lorem ipsum dolor sit amet Lorem icpsum dolor sit amet",
-        image: "2.png",
-      },
-      {
-        id: 2,
-        name: "GIBSON LES PAUL SPECIAL DOUBLE CUTAWAY",
+        id: 7,
+        name: "Black Strat",
         description:
-          "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum  dolor sit amet",
-        image: "2.png",
+          "David Gilmour had a decent collection of guitars, but the Black Strat, a modified black FENDER STRATOCASTER, held a special place in it.",
+        image: require("../assets/images/7.jpg"),
       },
     ],
   ];
