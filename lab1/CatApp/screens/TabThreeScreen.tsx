@@ -8,7 +8,7 @@ export default function TabThreeScreen({
 }: RootTabScreenProps<"TabThree">) {
   return (
     <View style={styles.container}>
-      <GuitarsScreen path="/screens/TabThreeScreen.tsx" />
+      <GuitarsScreen />
     </View>
   );
 }

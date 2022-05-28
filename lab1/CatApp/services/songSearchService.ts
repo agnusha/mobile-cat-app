@@ -31,7 +31,7 @@ export const songsterrSearch = async (
   } catch (err) {
     if (err) {
       console.error(err);
-      return null;
+      return undefined;
     }
     throw err;
   }

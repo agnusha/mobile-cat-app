@@ -30,7 +30,6 @@ export default function TabTwoScreen() {
         placeholder="Type query here..."
         placeholderTextColor="#888"
         round
-        showCancel
         value={search}
       />
 
