@@ -13,13 +13,15 @@ export default function ModalScreen() {
       />
 
       <Text>
-        <b>Name</b>: Starovojtava Agnia and Seledcova Liza
+        <Text style={styles.bold}>Name:</Text>
+        Starovojtava Agnia
       </Text>
       <Text>
-        <b>Group</b>: 981073
+        <Text style={styles.bold}>Group:</Text>
+        981073
       </Text>
       <Text>
-        <b>Lab</b>: 4
+        <Text style={styles.bold}>Lab:</Text>4
       </Text>
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
@@ -42,5 +44,8 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: "80%",
+  },
+  bold: {
+    fontWeight: "bold",
   },
 });
