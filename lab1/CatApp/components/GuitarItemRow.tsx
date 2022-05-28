@@ -1,8 +1,9 @@
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { GuitarItem } from "../models/GuitarItem";
 import { Text, View } from "./Themed";
+import firstImg from "../assets/images/1.png";
 
 export default function GuitarItemRow({ item }: { item: GuitarItem }) {
   return (
@@ -14,11 +15,11 @@ export default function GuitarItemRow({ item }: { item: GuitarItem }) {
         borderBottomWidth: 1,
         borderColor: "#808080",
         marginBottom: 2,
-        height: 80,
+        height: 100,
         width: "100%",
       }}
     >
-      <View style={[styles.centerElement, { width: 75 }]}>
+      <View style={[styles.centerElement, { width: 85 }]}>
         <View
           style={{
             borderWidth: 1,
@@ -27,12 +28,12 @@ export default function GuitarItemRow({ item }: { item: GuitarItem }) {
             borderRadius: 25,
           }}
         >
-          <AntDesign name="tago" size={28} color="#e89b17" />
+          <Image source={item.image} style={styles.image} />
         </View>
       </View>
       <View style={{ flex: 1, alignSelf: "center" }}>
         <Text style={{ fontSize: 15 }}>{item.name}</Text>
-        <Text numberOfLines={2} style={{ color: "#8f8f8f" }}>
+        <Text numberOfLines={3} style={{ color: "#8f8f8f" }}>
           {item.description}
         </Text>
       </View>
@@ -54,5 +55,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 10,
+    marginRight: 10,
+  },
+
+  image: {
+    width: 30,
+    height: 60,
   },
 });
