@@ -39,7 +39,7 @@ export default function TabTwoScreen() {
             {Object.entries(tabs)?.map(([artist, tabsList], i) => (
               <>
                 <ListItem
-                  key={i}
+                  key={artist}
                   bottomDivider
                   containerStyle={{
                     backgroundColor: "#db7093",
@@ -62,7 +62,7 @@ export default function TabTwoScreen() {
                 </ListItem>
 
                 {tabsList.map((tab, j) => (
-                  <ListItem key={`${i}${j}`} bottomDivider>
+                  <ListItem key={`${artist}${j}`} bottomDivider>
                     <Badge
                       value={j + 1}
                       badgeStyle={{
