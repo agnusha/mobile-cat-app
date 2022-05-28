@@ -87,17 +87,23 @@ export default function GuitarsScreen() {
         </TabView>
       </>
 
-      <Dialog isVisible={visible} onBackdropPress={toggleDialog}>
+      <Dialog
+        isVisible={visible}
+        onBackdropPress={toggleDialog}
+        overlayStyle={{
+          backgroundColor: "white",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Dialog.Title title="You find a toad" />
         <Avatar
           rounded
           source={{
             uri: "https://ru.meming.world/images/ru/thumb/e/e8/%D0%9F%D0%BE%D0%BB%D0%BA%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA_%D0%96%D0%B0%D0%B1%D0%B0_%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD.jpeg/300px-%D0%9F%D0%BE%D0%BB%D0%BA%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA_%D0%96%D0%B0%D0%B1%D0%B0_%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD.jpeg",
           }}
+          size="xlarge"
         />
-        <Dialog.Actions>
-          <Dialog.Button title="CANCEL" onPress={toggleDialog} />
-        </Dialog.Actions>
       </Dialog>
     </>
   );
